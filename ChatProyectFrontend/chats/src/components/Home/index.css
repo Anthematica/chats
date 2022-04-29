@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 62.5%;
+}
+
+.left_chat {
+    min-height: 100vh;
+    width: 614px;
+    border-right: 1px solid #C4C4C4;
+}
+
+.user-profile {
+    height: 120px;
+    width: 100%;
+    border-bottom: 1px solid #C4C4C4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-info {
+    padding-inline-start: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.good_morning {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-block-end: 8px;
+}
+
+.profile-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #C4C4C4;
+    margin-inline-end: 16px;
+    position: relative;
+}
+
+.conected {
+    width: 12px;
+    height: 12px;
+    background-color: #47DC44;
+    border-radius: 100%;
+    position: absolute;
+    inset-inline-end: 0px;
+    inset-block-end: 0px;
+}
+
+.profile-icons {
+    margin-inline-end: 48px;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+}
+
+.profile-icons div {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_name {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #41475E;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.contacts_container {
+    padding-inline-end: 80px;
+}
+
+/* .contact {
+    margin-block-end: 44px;
+} */
+
+.contacts {
+    padding-block-start: 30px;
+    padding-block-end: 30px;
+    margin-inline-start: 32px;
+    border-radius: 24px;
+    
+}
+
+.contacts:nth-child(1) {
+    margin-block-start: 32px;
+}
+
+.contacts:hover {
+    background-color: #4784DE;
+    color: white;
+}
+
+.contacts .profile-info {
+    padding: 0;
+    padding-inline-start: 15px;
+}
+
+.contacts .profile-info .profile-photo {
+    width: 64px;
+    height: 64px;
+}
+
+.home_container {
+    display: flex;
+}
