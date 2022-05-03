@@ -1,0 +1,5 @@
+.bubble_chat_right_sender {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}

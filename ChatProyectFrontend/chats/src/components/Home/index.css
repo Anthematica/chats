@@ -10,9 +10,10 @@ html {
 }
 
 .left_chat {
-    min-height: 100vh;
+    height: 100vh;
     width: 614px;
     border-right: 1px solid #C4C4C4;
+    position: relative;
 }
 
 .user-profile {
@@ -82,6 +83,8 @@ html {
 
 .contacts_container {
     padding-inline-end: 80px;
+    overflow-y: scroll;
+    height: 80%;
 }
 
 /* .contact {
@@ -117,4 +120,18 @@ html {
 
 .home_container {
     display: flex;
+    height: 100vh;
+}
+
+.logoutButton {
+    position: absolute;
+    inset-block-start: 0px;
+    inset-inline-end: 50%;
+    border: none;
+    padding: 10px;
+    background-color: #4784DE;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
 }

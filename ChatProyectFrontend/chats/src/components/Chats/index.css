@@ -1,0 +1,25 @@
+.chats_container {
+    width: 826px;
+    height: 100vh;
+    background-color: #F1F1F1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat_contact_info {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.chat_contact_info .conected {
+    display: none;
+}
+
+.chats_container_main {
+    height: 61%;
+    padding:30px;
+    overflow-y: scroll ;
+}

@@ -2,15 +2,15 @@ import React from "react";
 import {FastField, Form, Formik} from 'formik';
 import ky from 'ky';
 import {useNavigate} from 'react-router-dom';
+import './index.css';
+import { Link } from 'react-router-dom';
 
 import {buildFormikErrors} from '../../utils/build-formik-errors.js'
 
 function Register () {
     const navigate = useNavigate()
     return (
-        <div>
-            <h2>Welcome to the Register page!</h2>
-            <p>You can do this, I believe in you.</p>
+        <div className="register_container">
             <Formik
                 initialValues={{
                     email: '',
@@ -19,41 +19,46 @@ function Register () {
                 }}
                 onSubmit={handleSubmit}
             >
-                <Form>
-                    <h1>Register</h1>
+                <Form className="sign_form">
+                    <h1 className="register_name">Register</h1>
                     <FastField name="name">
                         {({field, meta}) => (
-                        <div>
-                            <input {...field} type="text" />
+                        <div className="input_container2">
+                            <input {...field} type="text" className="input" placeholder="Ingrese su nombre"/>
                             {!!meta.error && (
-                            <div>{meta.error}</div>
+                            <div className="errors">{meta.error}
+                            </div>
                             )}
                         </div>
                         )}
                     </FastField>
                     <FastField name="email">
                         {({field, meta}) => (
-                        <div>
-                            <input {...field} type="text" />
+                        <div className="input_container2">
+                            <input {...field} type="text"  className="input" placeholder="example@gmail.com"/>
                             {!!meta.error && (
-                            <div className="text-red-500">{meta.error}</div>
+                            <div className="errors">{meta.error}</div>
                             )}
                         </div>
                         )}
                 </FastField>
                 <FastField name="password">
                     {({field, meta}) => (
-                    <div>
-                        <input {...field} type="password" />
+                    <div className="input_container2">
+                        <input {...field} type="password"  className="input" placeholder="*******"/>
                         {!!meta.error && (
-                        <div className="text-red-500">{meta.error}</div>
+                        <div className="errors">{meta.error}</div>
                         )}
                     </div>
                     )}
                 </FastField>
-                <button type="submit">Create</button>
+                <div className="input_container2">
+                    <button type="submit" class="primary_button">Create</button>
+                </div>
+                      <Link to="/login" className="navigate_login">¿Ya tienes una cuenta?</Link>      
                 </Form>
             </Formik>
+             
         </div>
     );
 

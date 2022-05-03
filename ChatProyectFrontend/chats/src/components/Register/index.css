@@ -1,0 +1,69 @@
+.sign_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_container2 {
+    width: 500px;
+    height: auto;
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    outline: none;
+    border: 1.5px solid #4784DE;
+    border-radius: 8px;
+    padding: 12px;
+    margin-block-end: 32px;
+}
+
+.primary_button {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--backround-color);
+    border: 1.5px solid #4784DE;
+    background-color: #4784DE;
+    border-radius: 56px;
+    color: white;   
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.register_name {
+    margin-block-end: 20px;
+    background-color: white;
+    font-size: 4.5rem;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #4784DE;
+    -webkit-text-fill-color: white;
+
+}
+
+.register_container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigate_login {
+    font-size: 1.6rem;
+    text-decoration: none;
+    margin-block-start: 32px;
+    color:#4784DE;
+}
+
+.errors {
+    position: absolute;
+    width: 100%;
+    font-size: 1.4rem;
+    inset-block-end: 15px;
+    color: red;
+    text-align: center;
+
+}

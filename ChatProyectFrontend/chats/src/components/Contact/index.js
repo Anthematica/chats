@@ -1,8 +1,9 @@
 import '../Home/index.css'
 
 function Contact (props) {
+  
     return(
-        <div className='contacts'>
+        <div className='contacts' onClick={props.toggle}>
             <div className='profile-info'>
                 <div className='profile-photo'>
                     <div className='conected'></div>

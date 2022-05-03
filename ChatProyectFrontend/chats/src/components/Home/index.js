@@ -5,12 +5,15 @@ import './index.css';
 import {Profile} from '../Profile';
 import {Contact} from '../Contact';
 import {Chats} from '../Chats';
+import {LoginUser} from '../LoginUser';
 
 function Home () {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const [users, setUsers] = useState([]);
+    const [toggle, setToggle] = useState(false);
+    const [contact, setContact] = useState([]);
 
         //Traer todos los usuarios
     useEffect(() => {
@@ -19,9 +22,9 @@ function Home () {
             setUsers(resp.data);
           
         })();
-    }, []);
 
-    console.log(users);
+            
+    }, []);
 
     useEffect(() => {
         const accessToken = localStorage.getItem('access_token');
@@ -52,12 +55,12 @@ function Home () {
     if (!user) {
         return null
     }
-
+    const userLog = users.filter((i) => i.id !== user.id);
     return (
         <div className='home_container'>
             <section className='left_chat'>
                 <div className="user-profile">
-                    {user && <Profile user={user}></Profile>}
+                    {user && <LoginUser user={user}></LoginUser>}
                     <div className="profile-icons">
                         <div>
                             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,21 +79,32 @@ function Home () {
                             </svg>
                         </div>
                     </div>
-                    
                 </div>
+                
                 <div className='contacts_container'>
-                        {users.map((item)=> {
+                        {userLog.map((item)=> {
                             return (
-                                <Contact users={item.name}></Contact>
+                                <Contact users={item.name} toggle={() => toggleContact(item)}>
+
+                                </Contact>
                             );
                         })}
                 </div>
-                <button onClick={handleLogout}>Logout</button>
+                <button onClick={handleLogout} className='logoutButton'>Logout</button>
             </section>
-            <Chats></Chats>
+                {toggle && 
+                    <Chats contact={contact} logUser={user}></Chats>
+                }
+            
         </div>
         
     );
+
+ 
+    function toggleContact (item) {
+        setToggle(true);
+        setContact(item);
+    }
 
     function handleLogout() {
         localStorage.removeItem('access_token');
