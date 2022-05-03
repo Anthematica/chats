@@ -17,8 +17,8 @@ class ChatResource extends JsonResource
         return [
             'id' => $this->id,
             'message' => $this->message,
-            'receiver_id' => $this->receiver_id,
-            'sender_id' => $this->sender_id,
+            'receiver_id' => $this->whenLoaded('user'),
+            'sender_id' => $this->whenLoaded('sender'),
         ];
     }
 }

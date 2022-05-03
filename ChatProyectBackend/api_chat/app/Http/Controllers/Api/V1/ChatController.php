@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Events\ChatEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ChatResource;
 use App\Models\Chat;
@@ -12,7 +13,7 @@ class ChatController extends Controller
     
     public function index()
     {
-        return ChatResource::collection(Chat::with('user')->latest()->paginate());
+        return ChatResource::collection(Chat::with('user', 'sender')->latest()->paginate());
     }
 
     
@@ -29,6 +30,8 @@ class ChatController extends Controller
         $message = Chat::create($data)->fresh();
 
         $message->load('user');
+
+        ChatEvent::dispatch($message);
         
         return ChatResource::make($message);
     }

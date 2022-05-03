@@ -53,6 +53,7 @@ function Input ({contactInfo, logUser}) {
         const resp = await ky.post(`${process.env.REACT_APP_API_URL}/v1/chats`, {
             json: {...values, sender_id:logUser.id, receiver_id: contactInfo.id }
         }).json();
+        
 
         if (resp.errors) {
             const errors = buildFormikErrors(resp.errors);

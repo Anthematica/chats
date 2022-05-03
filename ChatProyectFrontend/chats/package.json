@@ -9,6 +9,8 @@
     "bootstrap": "^5.1.3",
     "formik": "^2.2.9",
     "ky": "^0.30.0",
+    "laravel-echo": "^1.11.4",
+    "pusher-js": "^7.1.0-beta",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",

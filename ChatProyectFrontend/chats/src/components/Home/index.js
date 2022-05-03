@@ -63,7 +63,7 @@ function Home () {
                 <div className="user-profile">
                     {user && <LoginUser user={user}></LoginUser>}
                     <div className="profile-icons">
-                        <div>
+                        {/* <div>
                             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.688 7.988H7.84V12.956H5.296V7.988H0.448V5.684H5.296V0.715999H7.84V5.684H12.688V7.988Z" fill="#ADADAD"/>
                             </svg>
@@ -76,16 +76,16 @@ function Home () {
                         <div>
                             <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.55059 14.6012C11.1684 14.6012 14.1012 11.6684 14.1012 8.05059C14.1012 4.4328 11.1684 1.5 7.55059 1.5C3.9328 1.5 1 4.4328 1 8.05059C1 11.6684 3.9328 14.6012 7.55059 14.6012Z" stroke="#ADADAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12.6254 13.1247L16.7427 17.242" stroke="#ADADAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.6254 13.1247L16.7427 17.242" stroke="#ADADAD" stroke-width="2" strokeinecap="round" stroke-linejoin="round"/>
                             </svg>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 
                 <div className='contacts_container'>
                         {userLog.map((item)=> {
                             return (
-                                <Contact users={item.name} toggle={() => toggleContact(item)}>
+                                <Contact key={item.id} users={item.name} toggle={() => toggleContact(item)}>
 
                                 </Contact>
                             );

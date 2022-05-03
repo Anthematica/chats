@@ -10,7 +10,11 @@ class Chat extends Model
     use HasFactory;
 
     function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'receiver_id');
+    }
+
+    function sender() {
+        return $this->belongsTo(User::class, 'sender_id');
     }
 
     protected $guarded = [];
