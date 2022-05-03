@@ -2,7 +2,8 @@ import ky from 'ky';
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import './index.css';
-import {Profile} from '../Profile';
+import {Spinner} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Contact} from '../Contact';
 import {Chats} from '../Chats';
 import {LoginUser} from '../LoginUser';
@@ -23,7 +24,7 @@ function Home () {
           
         })();
 
-            
+
     }, []);
 
     useEffect(() => {
@@ -49,7 +50,7 @@ function Home () {
     }, [navigate]);
 
     if (loading) {
-        return <div>Loading app..</div>
+        return <div className='spinnerContainer'> <Spinner color="primary" className='spinner'></Spinner></div>
     }
     
     if (!user) {
