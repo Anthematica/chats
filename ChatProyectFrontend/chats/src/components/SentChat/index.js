@@ -1,13 +1,10 @@
 import {SenderBubble } from '../ChatBubble/SenderBubble.js';
 import './index.css';
 
-function SentChat () {
+function SentChat ({senderChat}) {
     return (
         <div className='bubble_chat_right_sender'>
-            <SenderBubble></SenderBubble>
-            <SenderBubble></SenderBubble>
-            <SenderBubble></SenderBubble>
-            <SenderBubble></SenderBubble>
+            <SenderBubble senderChat= {senderChat}></SenderBubble>
         </div>
     ); 
 }

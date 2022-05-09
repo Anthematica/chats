@@ -1,9 +1,9 @@
 import './index.css';
 
-function SenderBubble () {
+function SenderBubble ({senderChat}) {
     return(
       <div className="chat_bubble_container bubble_right">
-              <p>Pruebaaa 2</p>
+              <p>{senderChat.message}</p>
       </div>  
     );
 }

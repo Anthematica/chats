@@ -7,6 +7,8 @@ import {useEffect, useState} from 'react';
 import ky from 'ky';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
+import { buildFormikErrors } from '../../utils/build-formik-errors'
+
 
 window.Pusher = require('pusher-js');
 window.Echo = new Echo({
@@ -16,17 +18,14 @@ window.Echo = new Echo({
     forceTLS: true
 });
 
-
 function Chats ({contact, logUser}) {
     const [chats, setChats] = useState([]);
-    console.log({chats})
 
     useEffect(()=> {
         const eventName = `.chatsent-${[logUser.id, contact.id].sort().join('-')}`
         const channel = window.Echo.channel('chat')
     
         channel.listen(eventName, (e) => {
-            console.log(1)
             setChats(chats => ([...chats, e.message]));
         });
 
@@ -43,6 +42,20 @@ function Chats ({contact, logUser}) {
             setChats(resp.data);
         })();
     }, []);
+
+    //Chats entre dos personas 
+    useEffect(()=> {
+        const access_token = localStorage.getItem('access_token');
+        (async function privatChats () {
+            const resp = await ky.get(`${process.env.REACT_APP_API_URL}/v1/chatsPrivados/${contact.id}`, {  
+                headers: {
+                    Authorization: `Bearer ${access_token}`
+                },
+            }).json();
+            console.log('Consulta entre dos personas', resp.data);
+            setChats(resp.data);
+        })();
+    }, [contact.id]);
 
     return(
         <div className="chats_container">
@@ -69,12 +82,15 @@ function Chats ({contact, logUser}) {
             </div>
             <div className='chats_container_main'>
                 {chats.map((item) => {
-                    console.log(item);
+                    if (logUser.id === item.sender_id?.id) {
+
+                        return (
+                            <SentChat senderChat={item}></SentChat>
+                            
+                        );
+                    }
                     return(
-                        <div key={item.id}>
-                             <ReceiverChat contact= {contact} recieverChat={item}></ReceiverChat>
-                             <SentChat senderChat={item}></SentChat>
-                        </div>
+                        <ReceiverChat contact= {contact} recieverChat={item}></ReceiverChat>
                     );
                 })
 
@@ -82,10 +98,31 @@ function Chats ({contact, logUser}) {
                 
             </div>
             
-            <Input contactInfo = { contact } logUser = {logUser} ></Input>
+            <Input handleSubmit={handleSubmit}></Input>
         </div>
        
     );
+
+
+    async function handleSubmit (values, formikBag) {
+        const resp = await ky.post(`${process.env.REACT_APP_API_URL}/v1/chats`, {
+            json: {...values, sender_id:logUser.id, receiver_id: contact.id }
+        }).json();
+       
+        if (resp.errors) {
+            const errors = buildFormikErrors(resp.errors);
+
+            formikBag.setErrors(errors);
+
+            return
+        }
+
+        setChats([...chats, resp.data]);
+
+        
+    }
+
+    
 }
 
 export {Chats};
